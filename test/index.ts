@@ -10,6 +10,6 @@ setTimeout(() => {
 
 schedule(dt => console.log('update', dt), frame)
 
-schedule(dt => console.log('update', dt), 1000)
+// schedule(dt => console.log('update', dt), 1000)
 
-schedule(dt => console.log('update', dt))
+// schedule(dt => console.log('update', dt))
