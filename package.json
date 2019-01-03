@@ -6,6 +6,10 @@
   "scripts": {
     "start": "tsc --watch"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saber2pr/saber-interval.git"
+  },
   "author": "saber2pr",
   "license": "ISC",
   "devDependencies": {
