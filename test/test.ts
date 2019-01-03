@@ -1,4 +1,4 @@
-import { schedule } from '../lib/interval'
+import { schedule } from '../lib/saber-interval'
 
 let frame = {
   delta: 1000

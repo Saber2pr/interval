@@ -1,12 +1,12 @@
 {
-  "name": "ts-vscode",
+  "name": "saber-interval",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "scheduleUpdate",
+  "main": "./build/index.js",
   "scripts": {
     "start": "tsc --watch"
   },
-  "author": "",
+  "author": "saber2pr",
   "license": "ISC",
   "devDependencies": {
     "typescript": "^3.2.1"
