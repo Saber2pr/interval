@@ -1,9 +1,7 @@
 # saber-interval
 
 ```bash
-npm install
-
-npm start
+npm install saber-interval
 ```
 
 > run ts in browser
