@@ -1,14 +1,12 @@
 {
   "compilerOptions": {
-    "outDir": "./build",
-    "outFile": "./build/index.js",
-    "module": "amd",
     "target": "es5",
+    "module": "commonjs",
     "declaration": true,
-    "removeComments": false,
-    "lib": [
-      "dom",
-      "es7"
-    ]
-  }
+    // "strict": true,
+    "outDir": "./lib",
+    "esModuleInterop": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "test"]
 }
