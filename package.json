@@ -1,18 +1,20 @@
 {
   "name": "saber-interval",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "scheduleUpdate",
-  "main": "./lib/index.js",
-  "scripts": {
-    "start": "tsc --watch"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Saber2pr/saber-interval.git"
   },
   "author": "saber2pr",
   "license": "ISC",
+  "main": "./lib/index.js",
+  "scripts": {
+    "start": "tsc --watch",
+    "pack": "webpack"
+  },
   "devDependencies": {
-    "typescript": "^3.2.1"
+    "typescript": "^3.2.1",
+    "webpack": "^3.12.0"
   }
 }
