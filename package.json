@@ -11,9 +11,11 @@
   "main": "./lib/index.js",
   "scripts": {
     "start": "tsc --watch",
-    "pack": "webpack"
+    "pack": "webpack",
+    "dev": "nodemon"
   },
   "devDependencies": {
+    "nodemon": "^1.18.9",
     "typescript": "^3.2.1",
     "webpack": "^3.12.0"
   }

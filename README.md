@@ -4,24 +4,19 @@
 npm install saber-interval
 ```
 
-> run ts in browser
-
 > scheduleUpdate
 
 ```ts
-import { schedule } from '../lib/interval'
-
-let frame = {
-  delta: 1000
+let frame: FrameProps = {
+  delta: 100,
+  isStop: false
 }
-
-setTimeout(() => {
-  frame.delta = 100
-}, 3000)
 
 schedule(dt => console.log('update', dt), frame)
 
-// schedule(dt => console.log('update', dt), 1000)
+setTimeout(() => {
+  frame.isStop = true
+}, 2000)
 
-// schedule(dt => console.log('update', dt))
+// schedule(() => console.log('simple update!'))
 ```
