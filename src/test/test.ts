@@ -1,14 +1,5 @@
-import { schedule, FrameProps } from '../core/saber-interval'
+import { schedule } from '../core/saber-interval'
 
-let frame: FrameProps = {
-  delta: 100,
-  isStop: false
-}
-
-schedule(dt => console.log('update', dt), frame)
-
-setTimeout(() => {
-  frame.isStop = true
-}, 2000)
+schedule(dt => console.log('update', dt), { delta: 100, delayCancel: 2000 })
 
 // schedule(() => console.log('simple update!'))

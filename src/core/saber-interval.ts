@@ -36,36 +36,75 @@ interface Update {
  * @interface FrameProps
  */
 export interface FrameProps {
-  delta?: number
-  isStop?: boolean
+  /**
+   * interval of the frames.
+   *
+   * @type {number}
+   * @memberof FrameProps
+   */
+  delta: number
+  /**
+   * destroy schedule?
+   *
+   * @type {boolean}
+   * @memberof FrameProps
+   */
+  cancel?: boolean
+  /**
+   * timeout to destroy schedule auto.
+   *
+   * @type {number}
+   * @memberof FrameProps
+   */
+  delayCancel?: number
+}
+/**
+ * @interface UnSchedule
+ */
+interface UnSchedule {
+  (): boolean
 }
 /**
  * schedule
  *
  * @export
  * @param {Update} update
+ * @returns {UnSchedule}
  */
-export function schedule(update: Update): void
+export function schedule(update: Update): UnSchedule
 /**
  * schedule
  *
  * @export
  * @param {Update} update
  * @param {FrameProps} frameProps
+ * @returns {UnSchedule}
  */
-export function schedule(update: Update, frameProps: FrameProps): void
-export function schedule(update: Update, frameProps?: FrameProps): void {
+export function schedule(update: Update, frameProps: FrameProps): UnSchedule
+export function schedule(update: Update, frameProps?: FrameProps): UnSchedule {
   let before = Date.now()
+  let delta = {
+    value: frameProps ? frameProps.delta : 17
+  }
+  let cancel = {
+    value: frameProps ? frameProps.cancel : false
+  }
+  let delayCancel = {
+    value: frameProps ? frameProps.delayCancel : -1
+  }
   const frame = () => {
-    let delta = frameProps ? frameProps.delta : 17
-    if (Date.now() - before > delta) {
-      before = Date.now()
-      update(delta)
-    }
-    if (frameProps ? frameProps.isStop : false) {
+    if (cancel.value) {
       return
+    }
+    if (Date.now() - before > delta.value) {
+      before = Date.now()
+      update(delta.value)
     }
     requestAnimationFrame(frame)
   }
   requestAnimationFrame(frame)
+  if (delayCancel.value > 0) {
+    setTimeout(() => (cancel.value = true), delayCancel.value)
+  }
+  return () => (cancel.value = true)
 }

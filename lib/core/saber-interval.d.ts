@@ -17,22 +17,49 @@ interface Update {
  * @interface FrameProps
  */
 export interface FrameProps {
-    delta?: number;
-    isStop?: boolean;
+    /**
+     * interval of the frames.
+     *
+     * @type {number}
+     * @memberof FrameProps
+     */
+    delta: number;
+    /**
+     * destroy schedule?
+     *
+     * @type {boolean}
+     * @memberof FrameProps
+     */
+    cancel?: boolean;
+    /**
+     * timeout to destroy schedule auto.
+     *
+     * @type {number}
+     * @memberof FrameProps
+     */
+    delayCancel?: number;
+}
+/**
+ * @interface UnSchedule
+ */
+interface UnSchedule {
+    (): boolean;
 }
 /**
  * schedule
  *
  * @export
  * @param {Update} update
+ * @returns {UnSchedule}
  */
-export declare function schedule(update: Update): void;
+export declare function schedule(update: Update): UnSchedule;
 /**
  * schedule
  *
  * @export
  * @param {Update} update
  * @param {FrameProps} frameProps
+ * @returns {UnSchedule}
  */
-export declare function schedule(update: Update, frameProps: FrameProps): void;
+export declare function schedule(update: Update, frameProps: FrameProps): UnSchedule;
 export {};
