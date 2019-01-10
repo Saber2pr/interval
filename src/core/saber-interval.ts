@@ -2,14 +2,16 @@
  * @Author: AK-12
  * @Date: 2018-12-28 20:09:54
  * @Last Modified by: AK-12
- * @Last Modified time: 2019-01-03 11:22:17
+ * @Last Modified time: 2019-01-10 13:21:22
  */
 /**
- * @export
- * @template T
- * @param {(count: number) => T} func
- * @param {number} [times=1]
- * @returns
+ * call function more times.
+ * @example
+ * ```ts
+call(() => console.log('call func 5 times!'), 5)
+ * ```
+ * @param func
+ * @param times
  */
 export function call<T>(func: (count: number) => T, times: number = 1) {
   let count = 0
@@ -57,6 +59,13 @@ export interface FrameProps {
    * @memberof FrameProps
    */
   delayCancel?: number
+  /**
+   * the times of update.
+   *
+   * @type {number}
+   * @memberof FrameProps
+   */
+  frames?: number
 }
 /**
  * @interface UnSchedule
@@ -66,6 +75,17 @@ interface UnSchedule {
 }
 /**
  * schedule
+ * @example
+ * ```ts
+// simple update
+schedule(() => console.log('simple update!'))
+
+// delay cancel update
+schedule(() => console.log('delay cancel update!'), {
+  delta: 100,
+  delayCancel: 2000
+})
+ * ```
  *
  * @export
  * @param {Update} update
@@ -92,13 +112,23 @@ export function schedule(update: Update, frameProps?: FrameProps): UnSchedule {
   let delayCancel = {
     value: frameProps ? frameProps.delayCancel : -1
   }
+  let frames = {
+    value: frameProps ? frameProps.frames : -1
+  }
+  let counter = 0
   const frame = () => {
-    if (cancel.value) {
-      return
-    }
     if (Date.now() - before > delta.value) {
+      if (cancel.value) {
+        return
+      }
+      if (frames.value > 0) {
+        if (counter >= frames.value) {
+          return
+        }
+      }
       before = Date.now()
       update(delta.value)
+      counter++
     }
     requestAnimationFrame(frame)
   }
@@ -108,3 +138,16 @@ export function schedule(update: Update, frameProps?: FrameProps): UnSchedule {
   }
   return () => (cancel.value = true)
 }
+/**
+ * scheduleOnce
+ * @example
+ * ```ts
+// setTimeout 2000
+scheduleOnce(dt => console.log('setTimeout!', dt), 2000)
+ * ```
+ *
+ * @param update
+ * @param delay
+ */
+export const scheduleOnce = (update: Update, delay: number) =>
+  schedule(update, { delta: delay, frames: 1 })

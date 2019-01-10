@@ -1,9 +1,11 @@
 /**
- * @export
- * @template T
- * @param {(count: number) => T} func
- * @param {number} [times=1]
- * @returns
+ * call function more times.
+ * @example
+ * ```ts
+call(() => console.log('call func 5 times!'), 5)
+ * ```
+ * @param func
+ * @param times
  */
 export declare function call<T>(func: (count: number) => T, times?: number): T;
 /**
@@ -38,6 +40,13 @@ export interface FrameProps {
      * @memberof FrameProps
      */
     delayCancel?: number;
+    /**
+     * the times of update.
+     *
+     * @type {number}
+     * @memberof FrameProps
+     */
+    frames?: number;
 }
 /**
  * @interface UnSchedule
@@ -47,6 +56,17 @@ interface UnSchedule {
 }
 /**
  * schedule
+ * @example
+ * ```ts
+// simple update
+schedule(() => console.log('simple update!'))
+
+// delay cancel update
+schedule(() => console.log('delay cancel update!'), {
+  delta: 100,
+  delayCancel: 2000
+})
+ * ```
  *
  * @export
  * @param {Update} update
@@ -62,4 +82,16 @@ export declare function schedule(update: Update): UnSchedule;
  * @returns {UnSchedule}
  */
 export declare function schedule(update: Update, frameProps: FrameProps): UnSchedule;
+/**
+ * scheduleOnce
+ * @example
+ * ```ts
+// setTimeout 2000
+scheduleOnce(dt => console.log('setTimeout!', dt), 2000)
+ * ```
+ *
+ * @param update
+ * @param delay
+ */
+export declare const scheduleOnce: (update: Update, delay: number) => UnSchedule;
 export {};
