@@ -1,6 +1,6 @@
 {
   "name": "saber-interval",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "scheduleUpdate",
   "repository": {
     "type": "git",
@@ -11,11 +11,9 @@
   "main": "./lib/index.js",
   "scripts": {
     "start": "tsc --watch",
-    "pack": "webpack",
-    "dev": "nodemon"
+    "dev": "webpack --watch"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9",
     "typescript": "^3.2.1",
     "webpack": "^3.12.0"
   }
