@@ -1,6 +1,0 @@
-{
-  "watch": [
-    "lib/**/*"
-  ],
-  "exec": "webpack"
-}

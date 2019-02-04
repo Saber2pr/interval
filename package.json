@@ -1,6 +1,6 @@
 {
   "name": "saber-interval",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "scheduleUpdate",
   "repository": {
     "type": "git",
@@ -11,10 +11,12 @@
   "main": "./lib/index.js",
   "scripts": {
     "start": "tsc --watch",
-    "dev": "webpack --watch"
+    "dev": "rollup -c --watch"
   },
   "devDependencies": {
     "typescript": "^3.2.1",
-    "webpack": "^3.12.0"
+    "rollup": "^1.1.2",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0"
   }
 }
