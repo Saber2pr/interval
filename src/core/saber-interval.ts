@@ -30,7 +30,7 @@ export function call<T>(func: (count: number) => T, times: number = 1) {
 /**
  * @interface Update
  */
-interface Update {
+export interface Update {
   (dt: number): void
 }
 /**
@@ -70,7 +70,7 @@ export interface FrameProps {
 /**
  * @interface UnSchedule
  */
-interface UnSchedule {
+export interface UnSchedule {
   (): boolean
 }
 /**
