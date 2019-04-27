@@ -1,23 +1,17 @@
-# saber-interval
-
-```bash
-npm install saber-interval
-```
+# @saber2pr/interval
 
 > scheduleUpdate
 
+```bash
+npm install @saber2pr/interval
+```
+
+# API
+
+1. frame 开始一个 loop
+2. interval 开始一个调度的 loop
+3. throttle 节流
+
 ```ts
-// simple update
-schedule(() => console.log('simple update!'))
-
-// delay cancel update
-schedule(() => console.log('delay cancel update!'), {
-  delta: 100,
-  delayCancel: 2000
-})
-
-// setTimeout 2000
-scheduleOnce(dt => console.log('setTimeout!', dt), 2000)
-
-call(() => console.log('call func 5 times!'), 5)
+interval(() => console.log('update'), 400)
 ```
