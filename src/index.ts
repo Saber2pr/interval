@@ -1,1 +1,1 @@
-export * from './core/saber-interval'
+export * from './core/interval'

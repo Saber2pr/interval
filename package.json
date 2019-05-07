@@ -1,7 +1,7 @@
 {
   "name": "@saber2pr/interval",
-  "version": "0.0.1",
-  "description": "scheduleUpdate",
+  "version": "0.0.2",
+  "description": "> Interval use requestAnimationFrame.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Saber2pr/-saber2pr-interval.git"
@@ -19,8 +19,7 @@
   },
   "keywords": [
     "interval",
-    "requestAnimationFrame",
-    "throttle"
+    "requestAnimationFrame"
   ],
   "devDependencies": {
     "typescript": "^3.2.1",

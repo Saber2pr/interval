@@ -5,9 +5,10 @@
     "declaration": true,
     "outDir": "./lib",
     "esModuleInterop": true,
+    "experimentalDecorators": true,
     "lib": [
-     "dom",
-     "es2015"
+      "dom",
+      "es2015"
     ]
   },
   "include": ["src"],
